@@ -6,6 +6,21 @@ PROBLEM_FILE="${PROBLEM_FILE:-data/example.md}"
 MODEL="${MODEL:-gpt-5.4}"
 REASONING_EFFORT="${REASONING_EFFORT:-xhigh}"
 
+if [[ "$PROBLEM_FILE" = /* ]]; then
+  echo "PROBLEM_FILE must be relative to agents/generation: $PROBLEM_FILE" >&2
+  exit 1
+fi
+
+if [[ "$PROBLEM_FILE" == ".." || "$PROBLEM_FILE" == ../* || "$PROBLEM_FILE" == */.. || "$PROBLEM_FILE" == */../* ]]; then
+  echo "PROBLEM_FILE must not contain '..': $PROBLEM_FILE" >&2
+  exit 1
+fi
+
+if [[ "$PROBLEM_FILE" != data/*.md ]]; then
+  echo "PROBLEM_FILE must point to a markdown file under data/: $PROBLEM_FILE" >&2
+  exit 1
+fi
+
 if [[ ! -f "$ROOT_DIR/$PROBLEM_FILE" ]]; then
   echo "Problem file not found: $ROOT_DIR/$PROBLEM_FILE" >&2
   exit 1
@@ -15,12 +30,43 @@ fi
 problem_rel="${PROBLEM_FILE#data/}"
 problem_rel="${problem_rel%.md}"
 problem_id="$(basename "$PROBLEM_FILE" .md)"
+ref_dir="data/${problem_rel}.refs"
+ref_prompt="Use reference_dir=${ref_dir} if it exists."
+
+prepare_references() {
+  local abs_ref_dir="$ROOT_DIR/$ref_dir"
+  if [[ ! -d "$abs_ref_dir" ]]; then
+    return
+  fi
+
+  local pdf_count=0
+  while IFS= read -r -d '' pdf; do
+    pdf_count=$((pdf_count + 1))
+    if ! command -v pdftotext >/dev/null 2>&1; then
+      echo "WARNING: found PDF references, but pdftotext is not installed; PDFs will be ignored." >&2
+      return
+    fi
+
+    local rel_pdf="${pdf#"$abs_ref_dir"/}"
+    local txt="$abs_ref_dir/.extracted/${rel_pdf%.pdf}.txt"
+    mkdir -p "$(dirname "$txt")"
+    if [[ ! -f "$txt" || "$pdf" -nt "$txt" ]]; then
+      pdftotext -layout "$pdf" "$txt"
+    fi
+  done < <(find "$abs_ref_dir" -type f -iname '*.pdf' -not -path "$abs_ref_dir/.extracted/*" -print0)
+
+  if [[ $pdf_count -gt 0 ]]; then
+    ref_prompt="Use reference_dir=${ref_dir} if it exists. PDF references have been extracted to ${ref_dir}/.extracted; read those extracted .txt files instead of the PDFs."
+  fi
+}
+
+prepare_references
 
 LOG_DIR="${LOG_DIR:-$ROOT_DIR/logs/$problem_rel}"
 mkdir -p "$LOG_DIR"
 
 log_file="$LOG_DIR/${problem_id}.md"
-prompt="Use AGENTS.md exactly to solve the math problem in ${PROBLEM_FILE}."
+prompt="Use AGENTS.md exactly to solve the math problem in ${PROBLEM_FILE}. Use problem_id=${problem_rel}. ${ref_prompt}"
 
 CODEX_VERSION="$(codex --version 2>/dev/null || echo 'unknown')"
 
@@ -29,6 +75,8 @@ echo " Codex:    $CODEX_VERSION"
 echo " Model:    $MODEL"
 echo " Effort:   $REASONING_EFFORT"
 echo " Problem:  $PROBLEM_FILE"
+echo " Problem ID: $problem_rel"
+echo " References: $ref_dir"
 echo " Log:      $log_file"
 echo "========================================"
 echo ""
@@ -47,7 +95,11 @@ elapsed_timer() {
 }
 elapsed_timer &
 TIMER_PID=$!
-trap 'kill $TIMER_PID 2>/dev/null; wait $TIMER_PID 2>/dev/null' EXIT
+cleanup_timer() {
+  kill "$TIMER_PID" 2>/dev/null || true
+  wait "$TIMER_PID" 2>/dev/null || true
+}
+trap cleanup_timer EXIT
 
 VERIFY_URL="${VERIFY_URL:-http://127.0.0.1:8091/health}"
 if ! curl -sf "$VERIFY_URL" >/dev/null 2>&1; then
@@ -68,7 +120,7 @@ codex_rc=0
     "$prompt"
 ) >"$log_file" 2>&1 || codex_rc=$?
 
-kill $TIMER_PID 2>/dev/null; wait $TIMER_PID 2>/dev/null
+cleanup_timer
 trap - EXIT
 
 END_EPOCH=$(date +%s)
