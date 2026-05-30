@@ -1,0 +1,1 @@
+{"timestamp_utc": "2026-05-30T15:52:42.893511+00:00", "channel": "verification_reports", "record": {"event_type": "final_report_written", "output_path": "/Users/yaoy/Documents/Rethlas/agents/verification/results/20260530T155155Z_67615df2ec7e/verification.json", "verdict": "correct"}}

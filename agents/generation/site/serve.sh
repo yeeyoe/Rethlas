@@ -25,7 +25,6 @@ sync_content() {
   fi
 
   local page_count=0
-  local -A section_seen
   local section_weight=1
 
   toml_escape() {
@@ -53,7 +52,7 @@ sync_content() {
       fi
 
       local section_dir="$CONTENT_DIR/$partial"
-      if [[ -z "${section_seen[$partial]:-}" ]]; then
+      if [[ ! -f "$section_dir/_index.md" ]]; then
         mkdir -p "$section_dir"
         local weight="$section_weight"
         if [[ "$partial" == "unclassified" ]]; then
@@ -61,7 +60,6 @@ sync_content() {
         fi
         printf '+++\ntitle = "%s"\nsort_by = "slug"\nweight = %d\n+++\n' \
           "$(toml_escape "$component")" "$weight" > "$section_dir/_index.md"
-        section_seen[$partial]=1
         if [[ "$partial" != "unclassified" ]]; then
           section_weight=$((section_weight + 1))
         fi

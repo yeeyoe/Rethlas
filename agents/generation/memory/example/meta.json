@@ -1,0 +1,7 @@
+{
+  "problem_id": "example",
+  "created_at_utc": "2026-05-30T15:51:18.126103+00:00",
+  "updated_at_utc": "2026-05-30T15:51:18.126207+00:00",
+  "problem_file": "data/example.md",
+  "problem": "Prove that every finite group of prime order is cyclic."
+}

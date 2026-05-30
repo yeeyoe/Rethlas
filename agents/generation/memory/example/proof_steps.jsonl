@@ -1,0 +1,5 @@
+{"timestamp_utc": "2026-05-30T15:51:49.004573+00:00", "channel": "proof_steps", "record": {"step_id": "step_1", "statement": "Let G be a finite group of order p, p prime.", "justification": "given"}}
+{"timestamp_utc": "2026-05-30T15:51:49.005015+00:00", "channel": "proof_steps", "record": {"step_id": "step_2", "statement": "G contains a non-identity element g (since |G| = p >= 2).", "justification": "definition of group order"}}
+{"timestamp_utc": "2026-05-30T15:51:49.005393+00:00", "channel": "proof_steps", "record": {"step_id": "step_3", "statement": "|<g>| divides p by Lagrange's theorem.", "justification": "Lagrange's theorem"}}
+{"timestamp_utc": "2026-05-30T15:51:49.005865+00:00", "channel": "proof_steps", "record": {"step_id": "step_4", "statement": "Since g != e, |<g>| > 1, so |<g>| = p (p prime).", "justification": "p has only divisors 1 and p"}}
+{"timestamp_utc": "2026-05-30T15:51:49.006150+00:00", "channel": "proof_steps", "record": {"step_id": "step_5", "statement": "Therefore <g> = G, so G is cyclic.", "justification": "definition of cyclic group"}}
