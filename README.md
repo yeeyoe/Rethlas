@@ -63,7 +63,7 @@ cd agents/generation
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r mcp/requirements.txt
-./tests/run_example.sh
+./tests/run.sh
 ```
 
 This script:
@@ -88,13 +88,13 @@ Then run:
 ```bash
 cd agents/generation
 source .venv/bin/activate
-PROBLEM_FILE=data/my_problem.md ./tests/run_example.sh
+PROBLEM_FILE=data/my_problem.md ./tests/run.sh
 ```
 
 You can group problems in subdirectories under `data/` and the generated artifacts preserve that structure. For example:
 
 ```bash
-PROBLEM_FILE=data/modrep/modrep.md ./tests/run_example.sh
+PROBLEM_FILE=data/modrep/modrep.md ./tests/run.sh
 ```
 
 To attach user-provided references to a problem, create a sibling reference directory with the same stem:

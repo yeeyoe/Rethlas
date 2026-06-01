@@ -1,0 +1,19 @@
+{"timestamp_utc": "2026-06-01T04:23:07.434719+00:00", "event_type": "memory_append", "channel": "immediate_conclusions"}
+{"timestamp_utc": "2026-06-01T04:23:07.435206+00:00", "event_type": "memory_append", "channel": "immediate_conclusions"}
+{"timestamp_utc": "2026-06-01T04:23:07.435556+00:00", "event_type": "memory_append", "channel": "immediate_conclusions"}
+{"timestamp_utc": "2026-06-01T04:23:07.435933+00:00", "event_type": "memory_append", "channel": "immediate_conclusions"}
+{"timestamp_utc": "2026-06-01T04:23:07.436402+00:00", "event_type": "memory_append", "channel": "immediate_conclusions"}
+{"timestamp_utc": "2026-06-01T04:23:07.436902+00:00", "event_type": "memory_append", "channel": "immediate_conclusions"}
+{"timestamp_utc": "2026-06-01T04:23:07.437487+00:00", "event_type": "memory_append", "channel": "immediate_conclusions"}
+{"timestamp_utc": "2026-06-01T04:23:07.437856+00:00", "event_type": "memory_append", "channel": "immediate_conclusions"}
+{"timestamp_utc": "2026-06-01T04:23:23.625854+00:00", "channel": "events", "record": {"event_type": "search_math_results", "query": "complex numbers with norm at most 1 signs plus minus 1 sum bounded by sqrt 2", "search_intent": "theorem", "primary_tool": "search_arxiv_theorems", "fallback_used": false, "results_summary": ["Searched for related theorems about sums of complex numbers with signed coefficients. The exact theorem was not found in the arxiv theorem database."], "useful_references": [], "branch_id": null, "subgoal_id": null}}
+{"timestamp_utc": "2026-06-01T04:23:54.660898+00:00", "event_type": "memory_append", "channel": "toy_examples"}
+{"timestamp_utc": "2026-06-01T04:23:54.661406+00:00", "event_type": "memory_append", "channel": "toy_examples"}
+{"timestamp_utc": "2026-06-01T04:23:54.661838+00:00", "event_type": "memory_append", "channel": "toy_examples"}
+{"timestamp_utc": "2026-06-01T04:23:54.662134+00:00", "event_type": "memory_append", "channel": "toy_examples"}
+{"timestamp_utc": "2026-06-01T04:23:54.662423+00:00", "event_type": "memory_append", "channel": "toy_examples"}
+{"timestamp_utc": "2026-06-01T04:23:54.662721+00:00", "event_type": "memory_append", "channel": "toy_examples"}
+{"timestamp_utc": "2026-06-01T04:24:04.407133+00:00", "event_type": "memory_append", "channel": "counterexamples"}
+{"timestamp_utc": "2026-06-01T04:24:09.268274+00:00", "channel": "events", "record": {"event_type": "search_math_results", "query": "Littlewood Offord problem complex numbers sqrt 2", "search_intent": "theorem", "primary_tool": "search_arxiv_theorems", "fallback_used": false, "results_summary": ["No directly relevant results from Lean theorem search."], "useful_references": [], "branch_id": null, "subgoal_id": null}}
+{"timestamp_utc": "2026-06-01T04:24:46.309291+00:00", "event_type": "memory_append", "channel": "big_decisions"}
+{"timestamp_utc": "2026-06-01T04:30:00+00:00", "channel": "events", "record": {"event_type": "search_math_results", "query": "complex numbers norm at most 1 signs sum bounded by sqrt 2 constructive proof", "search_intent": "theorem", "primary_tool": "built_in_web_search", "fallback_used": true, "results_summary": ["Searching for known constructive proof of sign selection for complex numbers in unit disk to bound sum by sqrt(2)"], "useful_references": [], "branch_id": null, "subgoal_id": null}}

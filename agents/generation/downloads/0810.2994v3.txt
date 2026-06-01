@@ -1,0 +1,1483 @@
+FROM THE LITTLEWOOD-OFFORD PROBLEM TO
+THE CIRCULAR LAW: UNIVERSALITY OF THE
+SPECTRAL DISTRIBUTION OF RANDOM MATRICES
+
+arXiv:0810.2994v3 [math.PR] 1 Jan 2009
+
+TERENCE TAO AND VAN VU
+
+Abstract. The famous circular law asserts that if Mn is an n×n
+matrix with iid complex entries of mean zero and unit variance,
+then the empirical spectral distribution (ESD) of the normalized
+matrix √1n Mn converges both in probability and almost surely to
+the uniform distribution on the unit disk {z ∈ C : |z| ≤ 1}. After
+a long sequence of partial results that verified this law under additional assumptions on the distribution of the entries, the circular
+law is now known to be true for arbitrary distributions with mean
+zero and unit variance. In this survey we describe some of the key
+ingredients used in the establishment of the circular law at this
+level of generality, in particular recent advances in understanding
+the Littlewood-Offord problem and its inverse.
+
+1. ESD of random matrices
+For an n × n matrix An with complex entries, let
+n
+1X
+µAn :=
+δλ
+n i=1 i
+be the empirical spectral distribution (ESD) of its eigenvalues λi ∈
+C, i = 1, . . . n (counting multiplicity), thus for instance
+1
+µAn ({z ∈ C|Rez ≤ s; Imz ≤ t}) = |{1 ≤ i ≤ n : Reλi ≤ s; Imλi ≤ t}|
+n
+for any s, t ∈ R (we use |A| to denote the cardinality of a finite set A),
+and
+Z
+n
+1X
+f dµAn =
+f (λi )
+n i=1
+for any continuous compactly supported f . Clearly, µAn is a discrete
+probability measure on C.
+1991 Mathematics Subject Classification. 15A52, 60G50.
+T. Tao is supported by NSF grant CCF-0649473 and a grant from the MacArthur
+Foundation.
+V. Vu is is supported by NSF Career Grant 0635606.
+1
+
+2
+
+TERENCE TAO AND VAN VU
+
+A fundamental problem in the theory of random matrices is to compute the limiting distribution of the ESD µAn of a sequence of random
+matrices An with sizes tending to infinity [34, 4]. In what follows, we
+consider normalized random matrices of the form An = √1n Mn , where
+Mn = (xij )1≤i,j≤n has entries that are iid random variables xij ≡ x.
+Such matrices have been studied at least as far back as Wishart [58]
+(see [34, 4] for more discussion).
+One of the first limiting distribution results is the famous semi-circle
+law of Wigner [57]. Motivated by research in nuclear physics, Wigner
+studied Hermitian random matrices with (upper triangular) entries being iid random variables with mean zero and variance one. In the
+Hermitian case, of course, the ESD is supported on the real line R. He
+proved that the expected ESD of a normalized n × n Hermitian matrix
+√1 Mn , where Mn = (xij )1≤i,j≤n has iid gaussian entries xij ≡ N (0, 1),
+n
+converges in the sense of probability measures1 to the semi-circle distribution
+√
+1
+1[−2,2] (x) 4 − x2 dx
+(1)
+2π
+on the real line, where 1E denotes the indicator function of a set E.
+Theorem 1.1 (Semi-circular law for the Gaussian ensemble). [57] Let
+Mn be an n×n random Hermitian matrix whose entries are iid gaussian
+variables with mean 0 and variance 1. Then, with probability one, the
+ESD of √1n Mn converges in the sense of probability measures to the
+semi-circle law (1).
+Henceforth we shall say that a sequence µn of random probability measures converges strongly to a deterministic probability measure µ if,
+with probability one, µn converges in the sense of probability measures
+to µ. We also say that µn Rconverges weakly to µ if for every continuous
+R
+compactlyR supportedR f , f dµn converges in probability to f dµ,
+thus P(| f dµn − f dµ| > ε) → 0 as n → ∞ for each ε > 0.
+Of course, strong convergence implies weak convergence; thus for instance in Theorem 1.1, µ √1 Mn converges both weakly and strongly to
+n
+the semicircle law.
+Wigner also proved similar results for various other distributions, such
+as the Bernoulli distribution (in which each xij equals +1 with probability 1/2 and −1 with probability 1/2). His work has been extended
+1We say that a collection µ
+
+n of probability measures converges to a limit µ if
+R
+R
+one has f dµn → f dµ for every continuous compactly supported function f , or
+equivalently if µ({z ∈ C|Rez ≤ s; Imz ≤ t}) converges to µ({z ∈ C|Rez ≤ s; Imz ≤
+t}) for all s, t.
+
+LITTLEWOOD-OFFORD, CIRCULAR LAW, UNIVERSALITY
+
+3
+
+and strengthened in several aspects [1, 2, 36]. The most general form
+was proved by Pastur [36]:
+Theorem 1.2 (Semi-circular law). [36] Let Mn be an n × n random
+Hermitian matrix whose entries are iid complex random variables with
+mean 0 and variance 1. Then ESD of √1n Mn converges (in both the
+strong and weak senses) to the semi-circle law.
+The situation with non-Hermitian matrices is much more complicated,
+due to the presence of pseudospectrum 2 that can potentially make the
+ESD quite unstable with respect to perturbations. The non-Hermitian
+variant of this theorem, the Circular Law Conjecture, has been raised
+since the 1950’s (see Chapter 10 of [4] or the introduction of [3])
+Conjecture 1.3 (Circular law). Let Mn be the n × n random matrix whose entries are iid complex random variables with mean 0 and
+variance 1. Then the ESD of √1n Mn converges (in both the strong and
+weak senses) to the uniform distribution µ := π1 1|z|≤1 dz on the unit disk
+{z ∈ C : |z| ≤ 1}.
+The numerical evidence for this conjecture is extremely strong (see e.g.
+Figure 1). However, there are significant difficulties in establishing this
+conjecture rigorously, not least of which is the fact that the main techniques used to handle Hermitian matrices (such as moment methods
+and truncation) can not be applied to the non-Hermitian model (see
+[4, Chapter 10] for a detailed discussion). Nevertheless, the conjecture
+has been intensively worked on for many decades. The circular law
+was verified for the complex gaussian distribution in [34] and the real
+gaussian distribution in [12]. An approach to attack the general case
+was introduced in [18], leading to a resolution of the strong circular law
+for continuous distributions with bounded sixth moment in [3]. The
+sixth moment hypothesis in [3] was lowered to (2+η)th moment for any
+η > 0 in [4]. The removal of the hypothesis of continuous distribution
+required some new ideas. In [21] the weak circular law for (possibly
+discrete) distributions with subgaussian moment was established, with
+the subgaussian condition relaxed to a fourth moment condition in [35]
+2Informally, we say that a complex number z lies in the pseudospectrum of a
+
+square matrix A if (A − zI)−1 is large (or undefined). If z lies in the pseudospectrum, then small perturbations of A can potentially cause z to fall into the spectrum
+of A, even if it is initially far away from this spectrum. Thus, whenever one has
+pseudospectrum far away from the actual spectrum, the actual distribution of eigenvalues can depend very sensitively (in the worst case) on the coefficients of A. Of
+course, our matrices are random rather than worst-case, and so we expect the most
+dangerous effects of pseudospectrum to be avoided; but this of course requires some
+analytical effort to establish, and deterministic techniques (e.g. truncation) should
+be used with extreme caution, since they are likely to break down in the worst case.
+
+4
+
+TERENCE TAO AND VAN VU
+
+(see also [19] for an earlier result of similar nature), and then to (2+η)th
+moment in [22]. Shortly before this last result, the strong circular law
+assuming (2 + η)th moment was established in [54]. Finally, in a recent paper [55], the authors proved this conjecture (in both strong and
+weak forms) in full generality. In fact, we obtained this result as a
+consequence of a more general theorem, presented in the next section.
+2. Universality
+An easy case of Conjecture 1.3 is when the entries xij of Mn are iid
+complex gaussian. In this case there is the following precise formula for
+the joint density function of the eigenvalues, due to Ginibre [17] (see
+also [34], [25] for more discussion of this formula):
+
+p(λ1 , · · · , λn ) = cn
+
+Y
+[i<j
+
+2
+
+|λi − λj |
+
+n
+Y
+
+2
+
+e−n|λi | .
+
+(2)
+
+i=1
+
+From here one can verify the conjecture in this case by a direct calculation. This was first done by Mehta and also Silverstein in the 1960s:
+Theorem 2.1 (Circular law for Gaussian matrices). [34] Let Mn be an
+n × n random matrix whose entries are iid complex gaussian variables
+with mean 0 and variance 1. Then, with probability one, the ESD of
+√1 Mn tends to the circular law.
+n
+A similar result for the real gaussian ensemble was established in [12].
+These methods rely heavily on the strong symmetry properties of such
+ensembles (in particular, the invariance of such ensembles with respect
+to large matrix groups such as O(n) or U (n)) in order to perform
+explicit algebraic computations, and do not extend directly to more
+combinatorial ensembles, such as the Bernoulli ensemble.
+The above mentioned results and conjectures can be viewed as examples of a general phenomenon in probablity and mathematical physics,
+namely, that global information about a large random system (such as
+limiting distributions) does not depend on the particular distribution
+of the particles. This is often referred to as the universality phenomenon (see e.g. [9]). The most famous example of this phenomenon is
+perhaps the central limit theorem.
+In view of the universality phenomenon, one can see that Conjecture 1.3
+generalizes Theorem 2.1 in the same way that Theorem 1.2 generalizes
+Theorem 1.1.
+
+LITTLEWOOD-OFFORD, CIRCULAR LAW, UNIVERSALITY
+
+Bernoulli
+
+5
+
+Gaussian
+
+%"!
+
+%"!
+
+!"$
+
+!"$
+
+!"&
+
+!"'
+
+!"#
+
+!"#
+
+!"'
+
+!"&
+
+!"!
+
+!"!
+
+!!"'
+
+!!"&
+
+!!"#
+
+!!"#
+
+!!"&
+
+!!"'
+
+!!"$
+
+!!"$
+
+!%"!
+
+!%"!
+!"!
+
+!"'
+
+!"#
+
+!"&
+
+!"$
+
+%"!
+
+%"'
+
+%"#
+
+%"&
+
+%"$
+
+'"!
+
+!"!
+
+!"&
+
+!"#
+
+!"'
+
+!"$
+
+%"!
+
+%"&
+
+%"#
+
+%"'
+
+%"$
+
+&"!
+
+Figure 1. Eigenvalue plots of two randomly generated
+5000 by 5000 matrices. On the left, each entry was an
+iid Bernoulli random variable, taking the values +1 and
+−1 each with probability 1/2. On the right, each entry
+was an iid Gaussian normal random variable, with probability density function is √12π exp(−x2 /2). (These two
+distributions were shifted by adding the identity matrix,
+thus the circles are centered at (1, 0) rather than at the
+origin.)
+A demonstration of the circular law for the Bernoulli and the Gaussian
+case appears3 in the Figure 1.
+The universality phenomenon seems to hold even for more general models of random matrices, as demonstrated by Figure 2 and Figure 3.
+This evidence suggests that the asymptotic shape of the ESD depends
+only on the mean and the variance of each entry in the matirx. As
+mentioend earlier, the main result of [55] (building on a large number
+of previous results) gives a rigorous proof of this phenomenon in full
+generality.
+For any matrix A, we define the Frobenius norm (or Hilbert-Schmidt
+norm) kAkF by the formula kAkF := trace(AA∗ )1/2 = trace(A∗ A)1/2 .
+Theorem 2.2 (Universality principle). Let x and y be complex random
+variables with zero mean and unit variance. Let Xn = (xij )1≤i,j≤n and
+Yn := (yij )1≤i,j≤n be n × n random matrices whose entries xij , yij are
+iid copies of x and y, respectively. For each n, let Mn be a deterministic
+3We thank Phillip Wood for creating the figures in this paper.
+
+6
+
+TERENCE TAO AND VAN VU
+
+Bernoulli
+
+Gaussian
+
+&
+
+&
+
+%#$
+
+%#$
+
+%
+
+%
+
+!%#$
+
+!%#$
+
+!&
+
+!&
+% %#"$
+
+&
+
+&#'$ "
+
+"#$
+
+( (#"$
+
+!
+
+%
+
+%
+
+!"#
+
+!"#
+
+!
+
+!
+
+!!"#
+
+!!"#
+
+!%
+
+% %#"$
+
+&
+
+&#'$ "
+
+! !"()
+
+%
+
+%"'$ ("!)
+
+"#$
+
+( (#"$
+
+!
+
+!%
+! !"()
+
+%
+
+%"'$ ("!)
+
+("* &
+
+&"#$
+
+$
+
+("* &
+
+&"#$
+
+$
+
+Figure 2. Eigenvalue plots of randomly generated n
+by n matrices of the form Dn + Mn , where n =
+5000. In the left column, each entry of Mn was
+an iid Bernoulli random variable, taking the values
++1 and −1 each with probability 1/2, and in the
+right column, each entry was an iid Gaussian normal random variable, with probability density function
+is √12π exp(−x2 /2). In the first row, Dn is the deterministic matrix diag(1, 1, . . . , 1, 2.5, 2.5, . . . , 2.5), and
+in the second row Dn is the deterministic matrix
+diag(1, 1, . . . , 1, 2.8, 2.8, . . . , 2.8) (in each case, the first
+n/2 diagonal entries are 1’s, and the remaining entries
+are 2.5 or 2.8 as specified).
+n × n matrix satisfying
+1
+kMn k2F < ∞.
+(3)
+2
+n n
+Let An := Mn +Xn and Bn := Mn +Yn . Then µ √1 An −µ √1 Bn converges
+n
+n
+weakly to zero. If furthermore we make the additional hypothesis that
+the ESDs
+µ( √1 Mn −zI)( √1 Mn −zI)∗
+(4)
+sup
+
+n
+
+n
+
+converge in the sense of probability measures to a limit for almost every
+z, then µ √1 An − µ √1 Bn converges strongly to zero.
+n
+
+n
+
+This theorem reduces the computing of the limiting distribution to the
+case where one can assume4 that the entries x have Gaussian (or any
+4Some related ideas also appear in [19].
+
+In the context of the central limit
+theorem, the idea of replacing arbitrary iid ensembles by Gaussian ones goes back
+to Lindeberg [31], and is sometimes known as the Lindeberg invariance principle;
+
+LITTLEWOOD-OFFORD, CIRCULAR LAW, UNIVERSALITY
+
+Bernoulli
+
+Gaussian
+
+*
+
+*
+
+)
+
+)
+
+#
+
+#
+
+!
+
+!
+
+!#
+
+!#
+
+!)
+
+!)
+
+!*
+!!"% !"#
+
+#
+
+)
+
+*
+
+&
+
+%
+
+7
+
+(
+
+$
+
+$"'
+
+'"%
+
+!*
+!!"% !"#
+
+#
+
+)
+
+*
+
+&
+
+%
+
+(
+
+$
+
+$"'
+
+'"%
+
+Figure 3. Eigenvalue plots of two randomly generated
+5000 by 5000 matrices of the form A + BMn B, where A
+and B are diagonal matrices having n/2 entries with the
+value 1 followed by n/2 entries with the value 5 (for D)
+and the value 2 (for X). On the left, each entry of Mn
+was an iid Bernoulli random variable, taking the values
++1 and −1 each with probability 1/2. On the right, each
+entry of Mn was an iid Gaussian normal random variable,
+with probability density function is √12π exp(−x2 /2).
+special) distribution. Combining this theorem (in the case Mn = 0)
+with Theorem 2.1, we conclude
+Corollary 2.3. The circular law (Conjecture 1.3) holds in both the
+weak and strong sense.
+It is useful to notice that Theorem 2.2 still holds even when the limiting
+distributions do not exist.
+The proof of Theorem 2.2 relies on several surprising connections between seemingly remote areas of mathematics that have been discovered in the last few years. The goal of this article is to give the reader
+an overview of these connections and through them a sketch of the
+proof of Theorem 2.2. The first area we shall visit is combinatorics.
+3. Combinatorics
+As we shall discuss later, one of the primary difficulties in controlling
+the ESD of a non-Hermitian matrix An = √1n Mn is the presence of
+pseudospectrum - complex numbers z for which the resolvent (An −
+zI)−1 = ( √1n Mn − zI)−1 exists but is extremely large. It is therefore
+of importance to obtain bounds on this resolvent, which leads one to
+see [11] for further discussion, and a formulation of this principle for Hermitian
+random matrices.
+
+8
+
+TERENCE TAO AND VAN VU
+
+understand for which vectors v ∈ Cn is (An − zI)v likely to be small.
+Expanding out the vector (An − zI)v, one encounters expressions such
+as ξ1 v1 + . . . + ξn vn , where v1 , . . . , vn ∈ C are fixed and ξ1 , . . . , ξn are
+iid random variables. The problem of understanding ths distribution
+of such random sums is known as the Littlewood-Offord problem, and
+we now pause to discuss this problem further.
+3.1. The Littlewood-Offord problem. Let v = {v1 , . . . , vn } be a
+set of n integers
+P and let ξ1 , . . . , ξn be i.i.d random Bernoulli variables.
+Define S := ni=1 ξi vi and pv (a) := P(S = a) and pv := supa∈Z pv (a).
+In their study of random polynomials, Littlewood and Offord [32] raised
+the question of bounding pv . They showed that if the vi are non-zero,
+√ n ). Very soon after, Erdős [13], using Sperner’s lemma,
+then pv = O( log
+n
+gave a beautiful combinatorial proof for the following refinement.
+Theorem 3.2. Let v1 , . . . , vn be non-zero numbers and ξi be i.i.d Bernoulli
+random variables. Then5
+
+n
+1
+bn/2c
+pv ≤
+= O( √ ).
+n
+2
+n
+Notice that the bound is sharp, as can be seen from the example
+v := {1, . . . , 1}, in which case S has a binomial distribution. Many
+mathematicians realized that while the classical bound in Theorem 3.2
+is sharp as stated, it can be improved significantly under additional
+assumptions on v. For instance, Erdős and Moser [14] showed that if
+the vi are distinct, then
+pv = O(n−3/2 ln n).
+They conjectured that the logarithmic term is not necessary and this
+was confirmed by Sárközy and Szemerédi [42]. Again, the bound is
+sharp (up to a constant factor), as can be seen by taking v1 , . . . , vn to
+be a proper arithmetic progression such as 1, . . . , n. Stanley [41] gave
+a different proof that also classified the extremal cases.
+A general picture was given by Halász, who showed, among other
+things, that if one forbids more and more additive structure6 in the
+5We use the usual asymptotic notation in this paper, thus X = O(Y ), Y = Ω(X),
+
+X  Y , or Y  X denotes an estimate of the form |X| ≤ CY where C does not
+depend on n (but may depend on other parameters). We also let X = o(Y ) denote
+the bound |X| ≤ c(n)Y , where c(n) → 0 as n → ∞.
+6Intuitively, this is because the less additive structure one has in the v , the more
+i
+likely the sums S are to be distinct from each other. In the most extreme case, if
+
+LITTLEWOOD-OFFORD, CIRCULAR LAW, UNIVERSALITY
+
+9
+
+vi , then one gets better and better bounds on pv . One corollary of his
+results (see [24] or [48, Chapter 9] is the following.
+Theorem 3.3. Consider v = {v1 , . . . , vn }. Let Rk be the number of
+solutions to the equation
+ε1 vi1 + · · · + ε2k vi2k = 0
+where εi ∈ {−1, 1} and i1 , . . . , i2k ∈ {1, 2, . . . , n}. Then
+pv = Ok (n−2k−1/2 Rk ).
+Remark 3.4. Several variants of Theorem 3.2 can be found in [27, 30, 16,
+28] and the references therein. The connection between the LittlewoodOfford problem and random matrices was first made in [26], in connection with the question of determining how likely a random Bernoulli
+matrix was to be singular. The paper [26] in fact inspired much of the
+work of the authors described in this survey.
+3.5. The inverse Littlewood-Offord problem. Motivated by inverse theorems from additive combinatorics, in particular Freiman’s
+theorem (see [15], [48, Chapter 5]) and a variant for random sums in
+[53, Theorem 5.2] (inspired by earlier work in [26]), the authors [49]
+brought a different view to the problem. Instead of trying to improve
+the bound further by imposing new assumptions, we aim to provide
+the full picture by finding the underlying reason for the probability pv
+to be large (e.g. larger than n−A for some fixed A).
+Notice that the (multi)-set v has 2n subsums, and pv ≥ n−C mean
+that at least 2n /nC among these take the same value. This suggests
+that there should be very strong additive structure in the set. In order
+to determine this structure, one can study examples of v where pv is
+large. For a set A, we denote by lA the set lA := {a1 + · · · + al |ai ∈ A}.
+A natural example is the following.
+Example 3.6. Let I = [−N, N ] and v1 , . . . , vn be elements of I. Since
+1
+S ∈ nI, by the pigeon hole principle, pv ≥ nI
+= Ω( N1 ). In fact, a short
+consideration yields a better
+√ bound. Notice that with probability at
+least .99, we have S ∈ 10 nI, thus again by the pigeonhole principle,
+1
+we have pv = Ω( √nN
+). If we set N = nC for some constant C, then
+1
+pv = Ω( C+1/2 ).
+n
+
+(5)
+
+the vi are linearly independent over the rationals Q, then the sums 2n sums S are
+all distinct, and so pv = 1/2n in this case.
+
+10
+
+TERENCE TAO AND VAN VU
+
+The next, and more general, construction comes from additive combinatorics. A very important concept in this area is that of a generalized
+arithmetic progression (GAP). A set Q of numbers is a GAP of rank d
+if it can be expressed as in the form
+Q = {a0 + x1 a1 + · · · + xd ad |Mi ≤ xi ≤ Mi0 for all 1 ≤ i ≤ d}
+for some a0 , . . . , ad , M1 , . . . , Md , M10 , . . . , Md0 .
+It is convenient to think of Q as the image of an integer box B :=
+{(x1 , . . . , xd ) ∈ Zd |Mi ≤ xi ≤ Mi0 } under the linear map
+Φ : (x1 , . . . , xd ) 7→ a0 + x1 a1 + · · · + xd ad .
+The numbers ai are the generators of P , and Vol(Q) := |B| is the
+volume of B. We say that Q is proper if this map is one to one, or
+equivalently if |Q| = Vol(Q). For non-proper GAPs, we of course have
+|Q| < Vol(Q).
+Example 3.7. Let Q be a proper GAP of rank d and volume V . Let
+v1 , . . . , vn be (not
+Pn necessarily distinct) elements of P . The random
+variable S =
+i=1 ξi vi takes values in the GAP nP . Since |nP | ≤
+d
+Vol(nB) = n V , the pigeonhole principle implies that pv ≥ Ω( nd1V ). In
+fact, using the same idea as in the previous example, one can improve
+1
+the bound to Ω( nd/2
+). If we set N = nC for some constant C, then
+V
+1
+pv = Ω( C+d/2 ).
+n
+
+(6)
+
+The above examples show that if the elements of v belong to a proper
+GAP with small rank and small cardinality then pv is large. A few years
+ago, the authors [49] showed that this is essentially the only reason:
+Theorem 3.8 (Weak inverse theorem). [49] Let C,  > 0 be arbitrary
+constants. There are constants d and C 0 depending on C and  such
+that the following holds. Assume that v = {v1 , . . . , vn } is a multiset of
+integers satisfying pv ≥ n−C . Then there is a GAP Q of rank at most
+0
+d and volume at most nC which contains all but at most n1− elements
+of v (counting multiplicity).
+Remark 3.9. The presence of the small set of exceptional elements is
+not completely avoidable. For instance, one can add o(log n) completely
+arbitrary elements to v and only decrease pv by a factor of n−o(1) at
+worst. Nonetheless we expect the number of such elements to be less
+than what is given by the results here.
+The reason we call Theorem 3.8 weak is the fact that the dependence
+between the parameters is not optimal and does not yet reflect the
+relations in (5) and (6). Recently, we were able to modify the approach
+to obtain an almost optimal result.
+
+LITTLEWOOD-OFFORD, CIRCULAR LAW, UNIVERSALITY
+
+11
+
+Theorem 3.10 (Strong inverse theorem). [56] Let C and 1 > ε be
+positive constants. Assume that
+pv ≥ n−C .
+Then there exists a GAP Q of rank d = OC,ε (1) which contains all but
+Od (n1−ε ) elements of v (counting multiplicity), where
+d
+
+|Q| = OC,ε (nC− 2 +ε ).
+The bound on |Q| matches (6), up to the ε term. The proofs of Theorem
+3.8 and 3.10 use harmonic analysis, combined with results from the
+theory of random walks and several facts about GAPs. Both theorems
+hold in a more general setting, where the elements of v are from a
+torsion-free group. The lower bound n−C on pv can also be relaxed,
+but the statement is more technical.
+As an application of Theorem 3.10, one can deduce, in a straightforward
+manner, a slightly weaker version of the forward results mentioned
+above. For instance, let us show if the vi are different, then pv ≤
+n−3/2+δ (for any constant δ > 0). Assume otherwise and set ε := δ/2.
+Theorem 3.10 implies that most of v is contained in a GAP Q of rank
+d and cardinality at most O(n3/2−δ−d/2+ε ) = O(n1−δ/2 ) = o(n). But
+since v has (1 − o(1))n elements in Q, we obtain a contradiction.
+Next we consider another application of Theorem 3.10, which will be
+more important in later sections. This theorem enables us execute
+very precise counting arguments. Assume that we would like to count
+the number of (multi)-sets v of integers with max |vi | ≤ N such that
+P (v) ≥ p := n−C .
+Fix d ≥ 1, fix7 a GAP Q with rank d and volume V = nC−d/2 . The
+dominating term will be the number of multi-subsets of size n of Q,
+which is
+|Q|n = n(C−d/2+)n ≤ nCn n−n/2+n = p−n n−n(1/2−) .
+
+(7)
+
+For later purposes, we need a continuous version of this result. Let the
+vi be complex numbers. Instead of pv , consider the maximum small
+ball probability
+pv (β) = max P(|S − z| ≤ β).
+z∈C
+
+7A more detailed version of Theorems 3.8 and 3.10 tells us that there are not too
+
+many ways to choose the generators of Q. In particular, if N = nO(1) , the number
+of ways to fix these is negligible.
+
+12
+
+TERENCE TAO AND VAN VU
+
+Given a small β > 0 and p = n−O(1) , the collection of v such that
+|v| = 1 and pv (β) ≥ p is infinite, but we are able to show that it can
+be approximated by a small set.
+Theorem 3.11 (The β-net Theorem). [54] Suppose that p = n−O(1) .
+Then the set of unit vectors v = (v1 , . . . , vn ) such that pv (β) ≥ p admits
+an β-net (in the infinity norm8 Ω of size at most
+|Ω| ≤ p−n n−n/2+o(n) .
+
+(8)
+
+Remark 3.12. A related result (with different parameters) appears in
+[38]; in our notation, the probability p is
+√allowed to be much smaller,
+but the net is coarser (essentially, a β n-net rather than a β-net).
+In terms of random matrices, the results in [38] are better suited to
+control the extreme tail of such quantities as the least singular value of
+An − zI, but require more boundedness conditions on the matrix An
+(and in particular, bounded operator norm) due to the coarser nature
+of the net.
+4. Computer Science
+Our next stop is computer science and numerical linear algebra, and in
+particular the problem of dealing with ill-conditioned matrices, which
+is closely related to the issue of pseudospectrum which is of central
+importance in the circular law problem.
+4.1. Theory vs Practice. Running times of algorithms are frequently
+estimated by worst-case analysis. But in practice, it has been observed that many algorithms, especially those involving a large matrix,
+perform significantly better than the worst-case scenario. The most
+famous example is perhaps the simplex algorithm in linear programming. Here, the basic problem (in its simplest form) is to optimize a
+goal function c · x, under the constraint Ax ≤ b, where c, b are given
+vectors of length n and A is an n×n matrix. In the worst case scenario,
+this algorithm takes exponential time. But in practice, the algorithm
+runs extremally well. It is still very popular today, despite the fact that
+there are many other algorithms proven to have polynomial complexity.
+There have been various attempts to explain this phenomenon. In
+this section we will discuss an influential recent explanation given by
+Spielman and Teng [44, 45].
+8In other words, for any v with p (β) ≥ p, there exists v0 ∈ Ω such that all
+v
+
+coefficients of v − v0 do not exceed β in magnitude.
+
+LITTLEWOOD-OFFORD, CIRCULAR LAW, UNIVERSALITY
+
+13
+
+4.2. The effect of noise. An important issue in the theory of computing is noise, as almost all computational processes are effected by
+it. By the word noise, we would like to refer to all kinds of errors
+occurring in a process, due to both humans and machines, including
+errors in measuring, errors caused by truncations, errors committed in
+transmitting and inputting the data, etc.
+Spielman and Teng [44] pointed out that when we are interested in a
+solving a certain system of equations, because of noise, our computer
+actually ends up solving a slightly perturbed version of the system.
+This is the core of their so-called smooth analysis that they used to
+explain the effectiveness of a specific algorithm (such as the simplex
+method). Interestingly, noise, usually a burden, plays a “positive” role
+here, as it smoothes the inputs randomly, and so prevents a very bad
+input from ever occurring.
+The puzzling question here is, of course: why is the perturbed input
+typically better than the original (worst-case) input ?
+In order to give a mathematical explanation, we need to introduce some
+notion. For an n × n matrix M , the condition number κ(M ) is defined
+as
+κ(M ) := kM kkM −1 k
+where kk denotes the operator norm. (If M is not invertible, we set
+κ(M ) = ∞.)
+The condition number plays a crucial role in numerical linear algebra;
+in particular, the condition number κ(M ) of a matrix M serves as a
+simplified proxy for the accuracy and stability of most algorithms used
+to solve the equation M x = b (see [5, 23], for example). The exact
+solution x = M −1 b, in theory, can be computed quickly (by Gaussian
+elimination, say). However, in practice computers can only represent
+a finite subset of real numbers and this leads to two difficulties: the
+represented numbers cannot be arbitrarily large or small, and there are
+gaps between two adjacent represented numbers. A quantity which is
+frequently used in numerical analysis is εmachine which is half of the
+distance from 1 to the nearest represented number. A fundamental
+result in numerical analysis [5] asserts that if one denotes by x̃ the
+result computed by computers, then the relative error kx̃−xk
+satisfies
+kxk
+
+
+kx̃ − xk
+= O εmachine κ(M )
+kxk
+
+14
+
+TERENCE TAO AND VAN VU
+
+Following the literature, we call M well-conditioned if κ(M ) is small.
+For quantitative purposes, we say that an n by n matrix M is wellconditioned if its condition number is polynomially bounded in n (that
+is, κ(M ) ≤ nC for some constant C independent of n).
+4.3. Randomly perturbed matrices are well-conditioned. The
+analysis in [44] is guided by the following fundamental intuition9:
+Conjecture 4.4. For every input instance, it is unlikely that a slight
+random perturbation of that instance has large condition number.
+More quantitatively,
+Conjecture 4.5. Let A be an arbitrary n by n matrix and let Mn be
+a random n by n matrix. Then with high probability A + Mn is wellconditioned.
+Notice that here one allows A to have a large condition number.
+Let us take a look at κ(A + Mn ) = kA + Mn kk(A + Mn )−1 k. In order
+to have κ(A + Mn ) = nO(1) , we want to upper-bound both kA + Mn k
+and k(A + Mn )−1 k. Bounding kA + Mn k is easy, since by the triangle
+inequality
+kA + Mn k ≤ kAk + kMn k.
+In most models of random matrices, kMn k ≤ nO(1) with very high
+probability, so it suffices to assume that kAk ≤ nO(1) ; thus we assume
+that the matrix A is of polynomial size compared to the noise level.
+This is a fairly reasonable assumption for high-dimensional matrices
+for which the effect of noise is non-negligible10, and we are going to
+assume it in the rest of this section.
+The remaining problem is to bound the norm of the inverse k(A +
+Mn )−1 k. An important detail here is how to choose the random matrix
+Mn . In their works [44, 45, 43], Spielman and Teng (and coauthors)
+set Mn to have iid Gaussian entries (with variance 1) and obtained the
+9This conjecture, of course, does not fully explain the phenomenon of smoothed
+
+analysis, since it may be that a well-conditioned matrix still causes a difficulty in
+one’s linear algorithms for some other reason, or perhaps the original ill-conditioned
+matrix did not cause a difficulty in the first place; we thank Alan Edelman for
+pointing out this subtlety. Nevertheless, Conjecture 4.4 does provide an informal
+intuitive justification of smoothed analysis, and various rigorous versions of this
+conjecture were used in the formal arguments in [44]: see Section 1.4 of that paper
+for further discussion.
+10In particular, it is naturally associated to the concept of polynomially smoothed
+analysis from [44].
+
+LITTLEWOOD-OFFORD, CIRCULAR LAW, UNIVERSALITY
+
+15
+
+following bound, which played a critical role in their smooth analysis
+[44, 45].
+Theorem 4.6. Let A be an arbitrary n by n matrix and Mn be a
+random matrix with iid Gaussian entries. Then for any x > 0,
+√
+n
+−1
+P(k(A + Mn ) k ≥ x) = O(
+).
+x
+While Spielman-Teng smooth analysis does seem to have the right philosophy, the choice of Mn is a bit artificial. Of course, the analysis
+still passes if one replaces Gaussian by a fine enough approximation.
+A large fraction of problems in linear programming deal with integral
+matrices, so the noise is perturbation by integers. In other cases, even
+when the noise has continuous support, the data is strongly truncated.
+For example, in many engineering problems, one does not keep more
+than, say, three to five decimal places. Thus, in many situations, the
+entries of Mn end up having discrete support with relatively small size,
+which may not even grow with n, while the approximation mentioned
+above would require this support to have size exponential in n. Therefore, in order to come up with an analysis that better captures real life
+data, one needs to come up with a variant of Theorem 4.6 where the
+entries of Mn have discrete support.
+This problem was suggested to the authors by Spielman a few years ago.
+Using the Weak Inverse Theorem, we were able to prove the following
+variant of Theorem 4.6 [50].
+Theorem 4.7. For any constants a, c > 0, there is a constant b =
+b(a, c) > 0 such that the following holds. Let A be an n by n matrix
+such that kAk ≤ na and let Mn be a random matrix with iid Bernoulli
+entries. Then
+P(k(A + Mn )−1 k ≥ nb ) ≤ n−c .
+Using the stronger β-net Theorem, one can have a nearly optimal relation between the constants a, b and c [51]. These results extend, with
+the same proof, to a large variety of distributions. For example, one
+does not need require the entries of Mn to be iid11, although independence is crucially exploited in the proofs. Also, one can allow many of
+the entries to be 0 [50].
+Remark 4.8. Results of this type first appear in [37] (see also [33] for
+some earlier related work for the least singualar value of rectangular
+matrices). In the special case where A = 0 and where the entries of
+Mn are iid and have finite fourth moment, Rudelson and Vershynin
+11In practice, one would expect the noise at a large entry to have larger variance
+
+than one at a small entry, due to multiplicative effects.
+
+16
+
+TERENCE TAO AND VAN VU
+
+[38] (see also [39], [40]) obtained sharp bounds for k(A + Mn )−1 k, using
+a somewhat different method, which relies on an inverse theorem of a
+slightly different nature; see Remark 3.12.
+The main idea behind the proof of Theorem 4.7, which first appears in
+[37], is the following. Let di be the distance from the ith row vector of
+A + Mn to the subspace spanned by the rest of the rows. Elementary
+linear algebra (see also (10) below) then gives the bound
+k(A + Mn )−1 k = nO(1) ( min di )−1 .
+1≤i≤n
+
+Ignoring various factors of nO(1) , the main task is then to understand
+the distribution of di for any given i.
+If v = (v1 , . . . , vn ) is the normal vector of a hyperplane V , then the
+distance from a random vector (a1 + ξ1 , . . . , an + ξn ) to the hyperplane
+V is given by the formula
+X
+|v1 (ξ1 + a1 ) + · · · + vn (ξn + an )| = |
+ai vi + S|
+i
+
+where S :=
+
+Pn
+
+i=1 vi ξi is as in the previous section.
+
+P
+To estimate the chance that | ni=1 ai vi + S| ≤ β, the notion of the
+small ball probability pv (β) comes naturally. Of course, this quantity depends on the normal vector v, and so we now divide into cases
+depending on the nature of this vector.
+If pv (β) small, we can be done using a conditioning argument12. On
+the other hand, the β-net Theorem says that there are “few” v such
+that pv (β) is large, and in this case a direct counting argument finishes
+the job13. Details can be found in [50], [54], or [51].
+12Intuitively, the idea of this conditioning argument is to first fix (or “condition”)
+
+on n − 1 of the rows of A + Mn , which should then fix the normal vector v.
+The remaining row is independent of the other n − 1 rows, and so should have a
+probability at most pv (β) of lying within β of the span of the those rows. There are
+some minor technical issues in making this argument (which essentially dates back
+to [29]) rigorous, arising from the fact that the n − 1 rows may be too degenerate
+to accurately control v, but these difficulties can be dealt with, especially if one is
+willing to lose factors of nO(1) in various places.
+13For instance, one important class of v for which p (β) tends to be large are
+v
+the compressible vectors v, in which most of the entries are close to zero. Each
+compressible v (e.g. v = (1, −1, 0, . . . , 0)) has a moderately large probability of
+being close to a normal vector for A + Mn (e.g. in the random Bernoulli case,
+v = (1, −1, 0, . . . , 0) has a probability about 2−n of being a normal vector); but the
+number (or more precisely, the metric entropy) of the set of compressible vectors is
+small (of size 2o(n) ) and so the net contribution of these vectors is then manageable.
+Similar arguments (relying heavily on the β-net theorem) handle other cases when
+v is large (e.g. if most entries of v live near a GAP of controlled size).
+
+LITTLEWOOD-OFFORD, CIRCULAR LAW, UNIVERSALITY
+
+17
+
+5. Back to probability
+5.1. The replacement principle. Let us now take another look at
+the Circular Law Conjecture. Recall that λ1 , . . . , λn are the eigenvalues
+of An = √1n Mn , which generates a normalized counting measure µAn .
+We want to show that µAn tends (in probability) to the uniform measure
+µ on the unit disk.
+The traditional way to attack this conjecture is via a Stieltjes transform
+technique14, following [18, 3]. Given a (complex) measure ν, define, for
+any z with Im z > 0,
+Z
+1
+dν(x).
+sν (z) :=
+x−z
+For the ESD µAn , we have
+sµAn (z) =
+
+1X 1
+.
+n
+λi − z
+
+Thanks to standard results from probability15, in order to establish the
+Circular Law Conjecture in the strong (resp. weak) sense, it suffices
+to show that sµn (z) converges almost surely (resp. in probability) to
+sµ (z) for almost all z (see [55] for a precise statement).
+Set z =: s + it and sn (z) =: S + iT . Since sn is analytic except
+at the poles, and vanishes at infinity, the Stieltjes transform sn (z) is
+determined by its the real part S. Let us take a closer look at this
+variable:
+
+1 X Re(λi ) − s
+n
+|λi − z|2
+1 X ∂
+log |λi − z|2
+= −
+2n
+∂s
+Z ∞
+1 ∂
+= −
+log x ∂ηn
+2 ∂s 0
+
+S =
+
+14The more classical moment method, which is highly successful in the Hermitian
+
+setting (for instance in proving Theorem 1.2), is not particularly effective in the
+non-Hermitian setting, because moments such as traceAm
+n for m = 0, 1, 2, . . . do not
+determine the ESD µAn (even approximately) unless one takes m to be as large as
+n; see [3], [4] for further discussion.
+15One can also use the theory of logarithmic potentials for this, as is done for
+instance in [21], [35].
+
+18
+
+TERENCE TAO AND VAN VU
+
+where
+ηn := µ( √1 Mn −zI)( √1 Mn −zI)∗
+n
+
+n
+
+is the normalised counting measure of the (squares of the) singular
+values of √1n Mn − zI. Notice that in the third equality, we use the fact
+Q
+that |λi − z| = | det( √1n Mn − zI)|. This step is critical as it reduces
+the study of a complex measure to a real one, or in other words to study
+the ESD of a Hermitian matrix rather than a non-Hermitian matrix.
+Putting this observation in the more general setting of Theorem 2.2,
+we arrived at the following useful result.
+Theorem 5.2 (Replacement principle). [55] Suppose for each n that
+An , Bn ∈ Mn (C) are ensembles of random matrices. Assume that
+(i) The expression
+1
+1
+kAn k2F + 2 kBn k2F
+2
+n
+n
+is weakly (resp. strongly) bounded16
+(ii) For almost all complex numbers z,
+1
+1
+1
+1
+log | det( √ An − zI)| − log | det( √ Bn − zI)|
+n
+n
+n
+n
+
+(9)
+
+converges weakly (resp. strongly) to zero. In particular, for each
+fixed z, these determinants are non-zero with probability 1−o(1)
+for all n (resp. almost surely non-zero for all but finitely many
+n).
+Then µ √1 An − µ √1 Bn converges weakly (resp. strongly) to zero.
+n
+
+n
+
+At a technical level, this theorem reduces Theorem 2.2 to the comparison of log | det( √1n An − zI)| and log | det( √1n Bn − zI)|.
+Remark 5.3. Note that this expression is large and unstable when z
+lies in the pseudospectra of either √1n An or √1n Bn , which means that
+the resolvent ( √1n An − zI)−1 or ( √1n Bn − zI)−1 is large. Controlling the
+probability of the event that z lies in the pseudospectrum is therefore
+an important portion of the analysis. This technical problem is not
+an artefact of the method, but is in fact essential to any attempt to
+control non-Hermitian ESDs for general random matrix models, as such
+ESDs are extremely sensitive to perturbations in the matrix in regions
+of pseudospectrum. See [3], [4] for further discussion.
+16A sequence x
+
+n of non-negative random variables is said to be weakly bounded
+if limC→∞ lim inf n→∞ P(xn ≤ C) = 1, and strongly bounded if lim supn→∞ xn < ∞
+with probability 1.
+
+LITTLEWOOD-OFFORD, CIRCULAR LAW, UNIVERSALITY
+
+19
+
+5.4. Treatment of the pole. Using techniques from probability, such
+as the moment method, one can show that the distributions of the
+singular values of √1n An − zI and √1n Bn − zI are asymptotically the
+same17 [3, 54, 10, 55, 11]. This, however, is not sufficient to conclude
+that n1 log | det( √1n An − zI)| and n1 log | det( √1n Bn − zI)| are close. As
+remarked earlier, the main difficulty here is that some of the singular
+values can be very small and thus significantly influence the value of
+logarithm.
+Now is where Theorem 4.7 enters the picture. This theorem tells us
+that (with overwhelming probability), there is no mass between 0 and
+(say) n−C , for some sufficiently large constant C. Using this critical
+information, with some more work18, we obtain:
+Theorem 5.5. [54] The Circular Law holds (with both strong and weak
+convergence) under the extra condition that the entries have bounded
+(2 + η)th moment, for some constant η > 0.
+Remark 5.6. Shortly after the appearance of [54], Götze and Tikhomirov
+[22] gave an alternate proof of the weak circular law with these hypothesis, using a variant of Theorem 4.7, which they obtained via a method
+from [37], [38]. This method is based on a different version of the Weak
+Inverse Theorem.
+5.7. Negative second moment and sharp concentration. At the
+point it was written, the analysis in [54] looked close to the limit of
+the method. It took some time to realize where the extra moment
+condition came from and even more time to figure out a way to avoid
+that extra condition. Consider the sums
+n
+1
+1
+1X
+log | det( √ An − zI)| =
+log σi ,
+n
+n i=1
+n
+
+17In the setting where the matrices X
+
+n and Yn have iid entries, one can use the
+results of [10] to establish this. In the non-iid case, an invariance principle from [11]
+gives a slightly weaker version of this equivalence; this was observed by Manjunath
+Krishnapur and appears as an appendix to [55].
+18In particular, the presence of certain factors of log n arising from inserting
+Theorem 4.7 into the normalized log-determinant n1 log | det( √1n An − zI)| forces
+one to establish a convergence rate for the ESD of √1n An − zI which is faster than
+logarithmic in n in a certain sense. This is what ultimately forces one to assume the
+bounded (2+η)th moment hypothesis. Actually the method allows one to relax this
+hypothesis to that of assuming E|x|2 logC (2 + |x|) < ∞ for some absolute constant
+C (e.g. C = 16 will do).
+
+20
+
+TERENCE TAO AND VAN VU
+
+where σ1 ≥ · · · ≥ σn are the singular values of √1n An − zI, and
+n
+1X
+1
+1
+log | det( √ Bn − zI)| =
+log σi0 ,
+n
+n i=1
+n
+
+where σ10 ≥ · · · ≥ σn0 are the singular values of √1n Bn − zI.
+As already mentioned, we know that the bulk of the σi and σi0 are
+distributed similarly. For the smallest few, we used the lower bound
+on σn as a uniform bound be show that their contribution is negligible.
+This turned out to be wasteful, and we needed to use the extra moment
+assumption to compensate the loss in this step.
+In order to remove this assumption, we need to find a way to give a
+better bound on other singular values. An important first step is the
+discovery of the following simple, but useful, identity.
+The Negative Second Moment Identity. [55] Let A be an m × n
+matrix, m ≤ n. Then
+m
+m
+X
+X
+−2
+di =
+σi−2
+(10)
+i=1
+
+i=1
+
+where, as usual, di are the distances and σi are the singular values.
+One can prove this identity using undergraduate linear algebra. With
+this in hand, the rest of the proof falls into place19. Consider the
+singular values σ1 ≥ · · · ≥ σn involved in our analysis, and use A as
+shorthand for √1n An − zI. To bound σn−k from below, notice that by
+the interlacing law
+σn−k (A) ≥ σm−k (A0 )
+where m := n − k and A0 is an m × n truncation of A, obtained by
+omitting the last k rows. The Negative Second Moment Identity implies
+
+0 −2
+
+kσm−k (A )
+
+≤
+
+m
+X
+i=1
+
+0 −2
+
+σi (A )
+
+=
+
+m
+X
+
+d−2
+i .
+
+i=1
+
+19A possible alternate approach would be to bound the intermediate singular
+
+values directly, by adapting the results from [39]. This would however require some
+additional effort; for instance, the results in [39] assume zero mean and bounded
+operator norm, which is not true in general when considering √1n An − zI for nonzero z assuming only a mean and variance condition on the entries of An . In any
+case, the analysis in [39] ultimately goes through a computation of the distances
+di , similarly to the approach we present here based on the negative second moment
+identity.
+
+LITTLEWOOD-OFFORD, CIRCULAR LAW, UNIVERSALITY
+
+21
+
+On the other hand, the right-hand side can be bounded efficiently,
+thanks to the fact that all di are large with overwhelming probability,
+which, in turn, is a consequence of Talagrand’s inequality [46]:
+Lemma 5.8 (Distance Lemma). [52, 55] With probability 1 − n−ω(1) ,
+the distance from
+p a random row vector to a subspace of co-dimension
+1
+k is at least 100 k/n, as long as k  log n.
+Thus, with overwhelming probability,
+k)/nk), which implies
+
+Pm
+
+−2
+is Ω(m/nk) = Ω((n −
+i=1 di
+
+k
+σn−k (A) ≥ σm−k (A0 )  p
+.
+(n − k)n
+This lower bound now is sufficient to establish Theorem 2.2 and with
+it the Circular Law in full generality.
+
+6. Open problems
+Our investigation leads to open problems in several areas:
+Combinatorics. Our
+P studies of Littewood-Offord problem focus on the
+linear form S := ni=1 vi xii . What can one say about higher degree
+polynomials ?
+P
+In [6], it was shown that for a quadratic form Q := 1≤i,j≤n cij ξi ξj with
+non-zero coefficients, P(Q = z) is O(n−1/8 ). It is simple to improve
+this bound to O(n−1/4 ) [7]. On the other hand, we conjecture that
+the truth is O(n−1/2 ), which would be sharp by taking Q = (ξ1 +
+· · · + ξn )2 . Costello (personal communication) recently improved the
+bound to O(n−3/8 ), and it looks likely that his approach will lead to
+the optimal bound, or something close.
+The situation with higher degrees is much less clear. In [6], a bound of
+the form O(n−ck ) was shown, where ck is a positive constant depending
+on k, the degree of the polynomial involved. In this bound ck decreases
+very fast with k.
+Smooth analysis. Spielman-Teng smooth analysis of the simplex algorithm [44] was done with gaussian noise. It is a very interesting problem
+to see if one can achieve the same conclusion with discrete noise with
+fixed support, such as Bernoulli. It would give an even more convincing
+
+22
+
+TERENCE TAO AND VAN VU
+
+explanation to the efficiency of the simplex method. As discussed earlier, noise that occurs in practice typically has discrete, small support.
+(This question was mentioned to us by several researchers, including
+Spielman, few years ago.)
+As discussed earlier, we now have the discrete version of Theorem 4.6.
+While Theorem 4.6 plays a very important part in Spielman-Teng analysis [45], there are several other parts of the proof that make use of the
+continuity of the support in subtle ways. It is possible to modify these
+parts to work for fine enough discrete approximations of the continuous
+(noise) variables in question. However, to do so it seems one need to
+make the size of the support very large (typically exponential in n, the
+size of the matrix).
+Another exciting direction is to consider even more realistic models of
+noise. For instance,
+• In several problems, the matrix may have many frozen entries,
+namely those which are not effected by noise. In particular, an
+entry which is zero (by nature of the problem) is likely to stay
+zero in the whole computation. It is clear that the pattern of
+the frozen entries will be of importance. For example, if the
+first column consists of (frozen) zero, then no matter how the
+noise effects the rest of the matrix, it will always be non-singular
+(and of course ill-conditioned). We hope to classify all patterns
+where theorems such as Theorem 2.2 are still valid.
+• In non-frozen places, the noise could have different distributions. It is natural to think that the error at a large entry
+should have larger variance than the one occurring at a smaller
+entry.
+Some preliminary results in these directions are obtained in [50]. However, we are still at the very beginning of the road and much needs to
+be done.
+Circular Law. A natural question here is to investigate the rate of
+convergence. In [54], we observed that under the extra assumption
+that the (2 + ε)-moment of the entries are bounded, we can have rate
+of convergence of order n−δ , for some positive constant δ depending on
+ε. The exact dependence between ε and δ is not clear.
+Another question concerns the determinant of random matrices. It is
+known, and not hard to prove, that log | det Mn | satisfies a central limit
+theorem, when the entries of Mn are iid gaussian, see [20, 8]. Girko
+[20] claimed that the same result holds for much more general models
+
+LITTLEWOOD-OFFORD, CIRCULAR LAW, UNIVERSALITY
+
+23
+
+of matrices. We, however, are unable to verify his arguments. It would
+be nice to have an alternative proof.
+7. Acknowledgements
+Thanks to Peter Forrester, Kenny Maples, and especially Alan Edelman
+for corrections.
+
+References
+[1] L. Arnold, On the asymptotic distribution of the eigenvalues of random matrices, J. Math. Anal. Appl., 20 (1967), 262-268.
+[2] L. Arnold, On WQigner’s semi-cirle law for the eigenvalues of random matrices,
+Z. Wahrsch. Verw. Gebiete, 19 (1971), 191-198.
+[3] Z. D. Bai, Circular law, Ann. Probab. 25 (1997), 494–529.
+[4] Z. D. Bai and J. Silverstein, Spectral analysis of large dimensional random
+matrices, Mathematics Monograph Series 2, Science Press, Beijing 2006.
+[5] D. Bau and L. Trefethen, Numerical linear algebra. Society for Industrial and
+Applied Mathematics (SIAM), Philadelphia, PA, 1997.
+[6] K. Costello, T. Tao, V. Vu, Random symmetric matrices are almost surely
+non-singular, Duke Math. J. 135 (2006), 395–413.
+[7] K. Costello and V. Vu, The ranks of random graphs, to appear in Random
+Structures and Algorthms.
+[8] K. Costello and V. Vu, Concentration of random determinants and Permanent
+Estimators, submitted.
+[9] P. Deift, Universality for mathematical and physical systems. International
+Congress of Mathematicians Vol. I, 125–152, Eur. Math. Soc., Zrich, 2007.
+[10] R. Dozier, J. Silverstein, On the empirical distribution of eigenvalues of
+large dimensional information-plus-noise-type matrices, J. Multivar. Anal. 98
+(2007), 678–694.
+[11] S. Chatterjee, A simple invariance principle. [arXiv:math/0508213]
+[12] A. Edelman, Probability that a Random Real Gaussian Matrix Has k Real
+Eigenvalues, Related Distributions, and the Circular Law, Journal of Multivariate Analysis 60, (1997), 203–232.
+[13] P. Erdős, On a lemma of Littlewood and Offord. Bull. Amer. Math. Soc. 51,
+(1945). 898–902.
+[14] P. Erdős, L. Moser, Elementary Problems and Solutions: Solutions: E736.
+Amer. Math. Monthly 54 (1947), no. 4, 229–230.
+[15] G. Freiman, Foundations of a structural theory of set addition. Translated
+from the Russian. Translations of Mathematical Monographs, Vol 37. American
+Mathematical Society, Providence, R. I., 1973. vii+108 pp.
+[16] P. Frankl and Z. Füredi, Solution of the Littlewood-Offord problem in high
+dimensions. Ann. of Math. (2) 128 (1988), no. 2, 259–270.
+[17] J. Ginibre, Statistical Ensembles of Complex, Quaternion, and Real Matrices,
+Journal of Mathematical Physics 6 (1965), 440-449.
+[18] V. L. Girko, Circular law, Theory Probab. Appl. (1984), 694–706.
+[19] V. L. Girko, The strong circular law. Twenty years later. II. Random Oper.
+Stochastic Equations 12 (2004), no. 3, 255–312.
+[20] V. L. Girko,
+
+24
+
+TERENCE TAO AND VAN VU
+
+[21] F. Götze, A.N. Tikhomirov, On the circular law, preprint
+[22] F. Götze, A.N. Tikhomirov, The Circular Law for Random Matrices, preprint
+[23] G. Golub and C. van Loan, Matrix computations, 3rd Edtion, 1996, John
+Hopkins Univ. Press.
+[24] G. Halász, Estimates for the concentration function of combinatorial number
+theory and probability, Period. Math. Hungar. 8 (1977), no. 3-4, 197–211.
+[25] C. R. Hwang, A brief survey on the spectral radius and the spectral distribution
+of large random matrices with i.i.d. entries, Contemp. Math. 50, Amer. Math.
+Soc., Providence, RI, 1986, 145–152.
+[26] J. Kahn, J. Komlós, E. Szemerédi, On the probability that a random 1-matrix
+is singular. J. Amer. Math. Soc. 8 (1995), no. 1, 223–240
+[27] G. Katona, On a conjecture of Erds and a stronger form of Sperner’s theorem.
+Studia Sci. Math. Hungar 1 1966 59–63.
+[28] D. Kleitman, On a lemma of Littlewood and Offord on the distributions of
+linear combinations of vectors, Advances in Math. 5 1970 155–157 (1970).
+[29] J. Komlós, On the determinant of (0, 1) matrices. Studia Sci. Math. Hungar
+2 1967 7–21.
+[30] J. Griggs, J. Lagarias, A. Odlyzko and J. Shearer, On the tightest packing of
+sums of vectors, European J. Combin. 4 (1983), no. 3, 231–236.
+[31] J. W. Lindeberg, Eine neue herleitung des exponentialgesetzes in der
+wahrscheinlichkeitsrechnung, Math. Z 15 (1922) 211–225.
+[32] J. E. Littlewood and A. C. Offord, On the number of real roots of a random
+algebraic equation. III. Rec. Math. [Mat. Sbornik] N.S. 12 , (1943). 277–286.
+[33] A. Litvak, A. Pajor, M. Rudelson and N. Tomczak-Jaegermann, Smallest singular value of random matrices and geometry of random polytopes, Adv. Math.
+195 (2005), no. 2, 491–523.
+[34] M.L. Mehta, Random Matrices and the Statistical Theory of Energy Levels,
+Academic Press, New York, NY, 1967.
+[35] G. Pan and W. Zhou, Circular law, Extreme singular values and potential
+theory, preprint.
+[36] L. A Pastur, On the spectrum of random matrices, Teoret. Mat. Fiz. 10,
+102-112 (1973).
+[37] M. Rudelson, Invertibility of random matrices: Norm of the inverse. Annals of
+Mathematics, to appear.
+[38] M. Rudelson and R. Vershynin, The Littlewood-Offord problem and the condition number of random matrices, Advances in Mathematics, 218 (2008)
+600-633.
+[39] M. Rudelson, R. Vershynin, The smallest singular value of a rectangular random matrix, preprint.
+[40] M. Rudelson, R. Vershynin, The least singular value of a random square matrix
+is O(n−1/2 ), preprint.
+[41] R. Stanley, Weyl groups, the hard Lefschetz theorem, and the Sperner property,
+SIAM J. Algebraic Discrete Methods 1 (1980), no. 2, 168–184.
+[42] A. Sárközy and E. Szemerédi, Über ein Problem von Erdős und Moser, Acta
+Arithmetica, 11 (1965) 205-208.
+[43] A. Sankar, S. H. Teng, and D. A. Spielman, Smoothed Analysis of the Condition Numbers and Growth Factors of Matrices, preprint.
+[44] D. A. Spielman and S. H. Teng, Smoothed analysis of algorithms, Proceedings
+of the International Congress of Mathematicians, Vol. I (Beijing, 2002), 597–
+606, Higher Ed. Press, Beijing, 2002.
+
+LITTLEWOOD-OFFORD, CIRCULAR LAW, UNIVERSALITY
+
+25
+
+[45] D. A. Spielman and S. H. Teng, Smoothed analysis of algorithms: why the
+simplex algorithm usually takes polynomial time, J. ACM 51 (2004), no. 3,
+385–463.
+[46] M. Talagrand, A new look at independence, Ann. Probab. 24 (1996), no. 1,
+1–34.
+[47] T. Tao and V. Vu, On random ±1 matrices: Singularity and Determinant,
+Random Structures Algorithms 28 (2006), no. 1, 1–23.
+[48] T. Tao, V. Vu, Additive combinatorics, Cambridge University Press, 2006.
+[49] T. Tao and V. Vu, Inverse Littlewood-Offord theorems and the condition number of random discrete matrices, Annals of Mathematics, to appear.
+[50] T. Tao and V. Vu, The condition number of a randomly perturbed matrix,
+STOC 2007.
+[51] T. Tao and V. Vu, Random matrices: A general approach for the least singular
+value problem, preprint.
+[52] T. Tao and V. Vu, On random (-1,1) matrices: Singularity and Determinant,
+Random Structures and Algorithms 28 (2006), no 1, 1-23.
+[53] T. Tao and V. Vu, On the singularity probability of random Bernoulli matrices,
+Journal of the A. M. S, 20 (2007), 603-673.
+[54] T. Tao and V. Vu, Random matrices: The Circular Law, Communication in
+Contemporary Mathematics 10 (2008), 261-307.
+[55] T. Tao and V. Vu, Random matrices: Universality of the ESD and the Circular
+Law (with an appendix by M. Krishnapur), submitted.
+[56] T. Tao and V. Vu, paper in preparation.
+[57] P. Wigner, On the distribution of the roots of certain symmetric matrices, The
+Annals of Mathematics 67 (1958) 325-327.
+[58] J. Wishart, The generalized product moment distribution in samples from a
+normal multivariate population, Biometrika 20 (1928), 32–52.
+
+Department of Mathematics, UCLA, Los Angeles CA 90095-1555
+E-mail address: tao@math.ucla.edu
+
+Department of Mathematics, Rutgers, Piscataway, NJ 08854
+E-mail address: vanvu@math.rutgers.edu
+
+

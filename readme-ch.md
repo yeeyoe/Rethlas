@@ -60,7 +60,7 @@ cd agents/generation
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r mcp/requirements.txt
-./tests/run_example.sh
+./tests/run.sh
 ```
 
 该脚本会：
@@ -85,13 +85,13 @@ agents/generation/data/my_problem.md
 ```bash
 cd agents/generation
 source .venv/bin/activate
-PROBLEM_FILE=data/my_problem.md ./tests/run_example.sh
+PROBLEM_FILE=data/my_problem.md ./tests/run.sh
 ```
 
 你可以在 `data/` 下创建子目录对问题进行分组，生成的工件将保留该结构。例如：
 
 ```bash
-PROBLEM_FILE=data/modrep/modrep.md ./tests/run_example.sh
+PROBLEM_FILE=data/modrep/modrep.md ./tests/run.sh
 ```
 
 要为问题附加用户提供的参考资料，请创建一个具有相同前缀的同级参考目录：

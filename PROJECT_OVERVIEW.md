@@ -59,7 +59,7 @@ Rethlas/
 │   │   │   ├── transform_math.py      # LaTeX→MathJax 预处理
 │   │   │   └── templates/index.html
 │   │   └── tests/
-│   │       └── run_example.sh         # 主入口脚本
+│   │       └── run.sh                 # 主入口脚本
 │   └── verification/                  # 验证智能体
 │       ├── AGENTS.md                  # 验证指令文档（171行）
 │       ├── api/
@@ -85,7 +85,7 @@ Rethlas/
 
 **位置**：[`agents/generation/`](agents/generation/)
 
-**入口**：[`tests/run_example.sh`](agents/generation/tests/run_example.sh) 脚本启动，核心命令：
+**入口**：[`tests/run.sh`](agents/generation/tests/run.sh) 脚本启动，核心命令：
 
 ```bash
 codex exec -C agents/generation -m gpt-5.4 --config model_reasoning_effort=xhigh <prompt>
@@ -275,10 +275,10 @@ uvicorn api.server:app --port 8091
 
 ```bash
 cd agents/generation
-PROBLEM_FILE=data/example.md bash tests/run_example.sh
+PROBLEM_FILE=data/example.md bash tests/run.sh
 ```
 
-**`run_example.sh` 脚本执行过程**：
+**`run.sh` 脚本执行过程**：
 1. 验证 `PROBLEM_FILE` 路径合法性
 2. 计算 `problem_id`
 3. 检测并预提取 PDF 参考文献（使用 `pdftotext`）

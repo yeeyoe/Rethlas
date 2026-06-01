@@ -49,7 +49,7 @@ cd agents/generation
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r mcp/requirements.txt
-./tests/run_example.sh
+./tests/run.sh
 ```
 
 运行完成后，结果将保存在 `agents/generation/results/` 目录下。
@@ -64,7 +64,7 @@ pip install -r mcp/requirements.txt
    ```bash
    cd agents/generation
    source .venv/bin/activate
-   PROBLEM_FILE=data/my_problem.md ./tests/run_example.sh
+   PROBLEM_FILE=data/my_problem.md ./tests/run.sh
    ```
 
 ### 使用本地参考资料
@@ -98,7 +98,7 @@ cd agents/generation
 
 示例：
 ```bash
-MODEL=gpt-4o ./tests/run_example.sh
+MODEL=gpt-4o ./tests/run.sh
 ```
 
 ---

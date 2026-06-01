@@ -1,0 +1,6 @@
+{
+  "problem_id": "sum/sum",
+  "problem": "Let z_1, ..., z_n be complex numbers with norm ≤ 1. Prove that there exists ε_i ∈ {1, -1} such that |∑ ε_i z_i| ≤ √2.",
+  "created": "2026-06-01",
+  "status": "in_progress"
+}

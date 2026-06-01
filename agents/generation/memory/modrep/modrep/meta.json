@@ -1,0 +1,8 @@
+{
+  "problem_id": "modrep/modrep",
+  "problem_statement": "Prove that for \\overline{\\mathbb{F}}_p-representations of a finite group G, the trivial representation has a finite resolution by representations induced from its Sylow p-subgroup.",
+  "reference_dir": "data/modrep/modrep.refs",
+  "references": [
+    "ref1.md"
+  ]
+}
